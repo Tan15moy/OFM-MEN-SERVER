@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const url = "mongodb+srv://Admin:Admin123@ofm-server.oowbq.mongodb.net/football_manager?retryWrites=true&w=majority"
 const app = express();
-mongoose.connect(url , { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || url , { useNewUrlParser: true, useUnifiedTopology: true })
 const con = mongoose.connection
 var isconnected = false
 
