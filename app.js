@@ -4,9 +4,11 @@ const url = "mongodb+srv://Admin:Admin123@ofm-server.oowbq.mongodb.net/football_
 const app = express();
 mongoose.connect(url , { useNewUrlParser: true, useUnifiedTopology: true })
 const con = mongoose.connection
+var isconnected = false
 
 con.on('open', () => {
     console.log("Mongodb Atlas connected...")
+    isconnected = true
 })
 app.use(express.json())
 
@@ -17,7 +19,7 @@ app.listen(port,host, () =>{
 })
 
 app.get('/', (req,res) =>{
-    res.send("Succesfull")
+    res.send("Succesfull  and database connection: "+isconnected)
 })
 
 const playersRouter = require('./routes/players')
