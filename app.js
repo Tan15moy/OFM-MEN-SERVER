@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const url = "mongodb+srv://Admin:Admin123@ofm-server.oowbq.mongodb.net/ofm-data?retryWrites=true&w=majority"
+const url = "mongodb+srv://Admin:Admin123@ofm-server.oowbq.mongodb.net/football_manager?retryWrites=true&w=majority"
 
 const app = express();
 mongoose.connect(url , { useNewUrlParser: true, useUnifiedTopology: true })
