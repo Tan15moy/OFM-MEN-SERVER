@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 
-const playerSchema = new mongoose.Schema({
-    
-})
+const player_schema = new mongoose.Schema({  }, { collection : 'football_manager' }); 
 
-module.exports = mongoose.model('player',playerSchema)
+module.exports = mongoose.model('player',player_schema)
