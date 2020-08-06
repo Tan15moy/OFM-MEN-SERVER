@@ -1,5 +1,7 @@
 const express = require('express')
+const mongodb = require('mongodb')
 const router = express.Router()
+
 const player = require('../models/player')
 
 
@@ -8,10 +10,22 @@ router.get('/', async(req,res) =>{
     res.json(player_Detail)
 })
 
-router.get('/:name', async(req,res) =>{
+
+router.get('/search_by_name/:name', async(req,res) =>{
     const name = req.params.name
-    const player_Detail = await player.find({"Name":name})
-    res.json(player_Detail)
+    player.find({"Name":name},(err,result) =>{
+        if(err)     res.send(err)
+        else        res.json(result)
+    })
+})
+
+router.get('/search_by_id/:id', async(req,res) =>{
+    const id = req.params.id
+    player.findById(id,(err,result) =>{
+        if(err)     res.send(err)
+        else        res.json(result)
+    })
+    
 })
 
 
