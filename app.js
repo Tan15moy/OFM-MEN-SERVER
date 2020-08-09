@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+var cors = require('cors')
+
 const url = "mongodb+srv://Admin:Admin123@ofm-server.oowbq.mongodb.net/football_manager?retryWrites=true&w=majority"
 const app = express();      //Activating Express Server
 app.use(express.json())     //json Compaitable
@@ -19,6 +21,13 @@ const host ='0.0.0.0'
 app.listen(port,host, () =>{
     console.log("Server running...on port: "+port)
 })
+
+//*****  Middleware || CORS Policy 
+//app.use(cors()) //Open to All
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+  }));
 
 
 //***  Home Screen
